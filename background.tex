@@ -6,13 +6,37 @@
     \item Justify some of the key design decisions w.r.t language and tool for this specific project.
 \end{itemize}
 
-
 Despite all the different ways that data can be wrong, the they can be characterized by a concise set of declarative operations.  We base much of our approach for error synthesis and generation based on these operations.  LIST THEM.
 
 Give examples for an operation that are seemingly different, but all boil down to the same operator.
 
 Our insight is that the parameters to these operators are precisely what the domain experts can provide.
 
-Conversely, this simple algebra offers a concise way of {\it describing} the errors present in a dataset.  It is difficult to summarize data~\cite{bhardwaj2015collaborative}, and current approaches heavily utilize visualization or statistical summarization techniques, which can be difficult to understand.  In contrast, presenting a sequence of data error operations, along with their parameters, as a summary of a dirty dataset, would be akin to presenting a SQL query that summarizes a transformed dataset.  In fact, view synthesis work exists.
+\subsection{Desirata}
+
+Clarify how this relates to training and online prediction and where it benefits.  
+
+1) Training a robust machine learning model.  Domain expert specifies the common sets of ways that the data can be dirty, and the system automatically, and increasingly perturbs the training dataset to understand how robust the trained model will be in the application.
+
+2) The dual problem: online robustness.  Perturb the test dataset to see if the currently trained model is robust to future possible errors.
+
+Generally characterizing dirtiness
+
+3) Conversely, this simple algebra offers a concise way of {\it describing} the errors present in a dataset.  It is difficult to summarize data~\cite{bhardwaj2015collaborative}, and current approaches heavily utilize visualization or statistical summarization techniques, which can be difficult to understand.  In contrast, presenting a sequence of data error operations, along with their parameters, as a summary of a dirty dataset, would be akin to presenting a SQL query that summarizes a transformed dataset.  In fact, view synthesis work exists.
+
+
+
+\subsection{Challenges}
+
+{\bf Realistic errors:} recent studies have found that data cleaning algorithms that work on synthetic data can fail on real data errors~\cite{mikecleaningexp}.  However one of the main challenges is to 
+collect, characterize, and use real-world data errors in a way that facilitates experimentation.  For instance, need both original dirty data as well as the cleaned versions, AND a mapping between the two datasets.
+Once these are collected, these datasets are often used as-is.  However, an important property of benchmarks and robustness testers is the ability to scale up or down the amount of error in order to see how the data cleaning algorithms, and ultimately the application responds to the errors.  Without a model and characterization, difficult to even understand what this scaling means.
+
+Thus, there is a fine balance between real examples and simulated errors.  A key challenges is to provide an extensible framework that grounds the types of errors using real datasets, but allows tunable parameters that allows for this scaling.
+
+{\bf Characterization}  Given data, how to characterize?  Need to define operators, parameters, and generalizable methods to summarize the errors.  Much harder if there are multipel data errors present in the dataset.
+
+{\bf Summarization: } ??
+
 
 
