@@ -1,17 +1,27 @@
 \section{Introduction}
 Preparing and cleaning datasets prior to analysis is a perennial challenge in data analytics. As it has become easier to acquire and store ever larger datasets, the challenges associated with large-scale data cleaning, wherein issues caused by incorrect, missing, and duplicate data are identified and repaired, are of interest to both industry and academia. The result has been a several new systems, algorithms, abstractions, and interfaces for data cleaning --- however, there does not exist a unified evaluation methodology for either research or practice. This paper describes a number of problems in data cleaning and proposes new techniques to evaluate and benchmark data cleaning.
 
+
+Important:
+
+\begin{itemize}
+\item Clearly distinguish training and testing and discuss how dirty data affects each of these settigns.
+\item Important to mention that this is not comprehensive.  Lots of errors such as integration we DONT cover, or don't cover adequately.
+\end{itemize}
+
+
+\subsection{One Angle}
+
 One source of challenges is that what dirtiness means, and how it should be resolved, is highly contextual.  It depends on the intended application---ML may not care about things close to the margin, stable aggregation functions such as median may be robust to noise---the complexity of the data (how normalized, how its modeled), etc etc.
 
 Existing data cleaning systems take a scortched earth approach, where the entire dataset is cleaned.  In settings such as data integration, where the data will be individually presented to users (say in bills), this is needed.  However, many modern applications related to prediction and analysis do not need this approach. 
 
 For exampel, give a simple example where understanding how robust the application is to data dirtiness is important.  Maybe the devolper/user can describe the types of dirtiness and wants to see how robust it will be.  
 
-Another angle:  there are many many data cleaning algorithms that can be applied in different contexts, for different types of datasets, and at times for a specific type of data error.  (list types of data errors)   The current challenge is that it is unclear how they apply in a general application, and how they compare under other dirtiness settings, or when multiple data errors are present in a dataset.  This is a big limitation because it is currently difficult for practitioners to pick the most appropriate algorithms for their task.    On the bright side, [ref wisteria, etc] have proposed a small set of operators that can address a large variety of possible errors.  If we can understand when and how effectively each cleaning alogirthm is for a dataset and application, then we have hopes of realizing an optimizer for declarative data cleaning languages.  In this paper, we propose an extensible framework for making these evaluations, propose metrics, and show that a simple optimizer can be built.  In addition, we show other things that sanjay is excited about.
+\subsection{Another Angle}
 
-Clearly distinguish training and testing and discuss how dirty data affects each of these settigns.
+There are many many data cleaning algorithms that can be applied in different contexts, for different types of datasets, and at times for a specific type of data error.  (list types of data errors)   The current challenge is that it is unclear how they apply in a general application, and how they compare under other dirtiness settings, or when multiple data errors are present in a dataset.  This is a big limitation because it is currently difficult for practitioners to pick the most appropriate algorithms for their task.    On the bright side, [ref wisteria, etc] have proposed a small set of operators that can address a large variety of possible errors.  If we can understand when and how effectively each cleaning alogirthm is for a dataset and application, then we have hopes of realizing an optimizer for declarative data cleaning languages.  In this paper, we propose an extensible framework for making these evaluations, propose metrics, and show that a simple optimizer can be built.  In addition, we show other things that sanjay is excited about.
 
-Important to mention that this is not comprehensive.  Lots of errors such as integration we DONT cover, or don't cover adequately.
 
 \begin{itemize}
     \item Describe the problems that we are addressing
